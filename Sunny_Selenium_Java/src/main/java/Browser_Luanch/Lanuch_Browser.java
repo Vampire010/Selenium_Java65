@@ -3,10 +3,11 @@ package Browser_Luanch;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class Lanuch_Browser 
 {
-	public WebDriver driver;
+	private WebDriver driver;
 	
 	public void Browser(String browser_type , String URL)
 	{
@@ -23,10 +24,9 @@ public class Lanuch_Browser
 		
 		else if(browser_type.equals("safari"))
 		{
-			System.setProperty("webdriver.safari.driver", "/Users/girishg/git/repository2/Sunny_Selenium_Java/Browser_Drivers/chromedriver");
+			//System.setProperty("webdriver.safari.driver", "/Users/girishg/git/repository2/Sunny_Selenium_Java/Browser_Drivers/chromedriver");
 			
-			WebDriver driver = new ChromeDriver();
-		
+			WebDriver driver = new SafariDriver();		
 			driver.get(URL);
 		}
 		
@@ -46,6 +46,14 @@ public class Lanuch_Browser
 			
 		}
 		
+	}
+
+	public WebDriver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(WebDriver driver) {
+		this.driver = driver;
 	}
 	
 
