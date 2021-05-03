@@ -1,34 +1,52 @@
 package Pages;
 
 import java.util.concurrent.TimeUnit; 
-import org.openqa.selenium.By; 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver; 
 
 public class aaaaa 
 { 
 	public static void main(String[] args) 
 	{ 
-		WebDriver driver = new FirefoxDriver(); 
-		   driver.manage().window().maximize(); 
-		  String URL = "https://selenium08.blogspot.com/2019/11/selenium-iframe.html"; 
-		  driver.get(URL); 
-		  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 
+		System.setProperty("webdriver.chrome.driver", "/Users/girishg/git/repository2/Sunny_Selenium_Java/Browser_Drivers/chromedriver");
 
-		// Locate second frame (Naukri) by WebElement. 
-		   WebElement frameElement = driver.findElement(By.name("iframe_b")); // Here, frame is located by using name attribute. 
-		   System.out.println("Switching to second frame from main web page"); 
-		   driver.switchTo().frame(frameElement); // Passing frameElement as an input parameter to frame(). 
+		// Create a driver object for Firefox browser. 
+		   WebDriver driver = new ChromeDriver(); 
+		   
+		   //Creating the JavascriptExecutor interface object by Typecasting
+	        JavascriptExecutor js = (JavascriptExecutor)driver;
+	        
+	        //Launching the Site.
+	        driver.get("https://in.news.yahoo.com/");
+	     
+	        //Maximize window
+	        driver.manage().window().maximize();
+	        
+	        //Vertical scroll down by 500  pixels
+	       // js.executeScript("window.scrollBy(1000,1000)");
+	        
+	        
+	        ((JavascriptExecutor)driver).executeScript("window.location='https://www.softwaretestingexperts.com/'");
+	        
+	        
+	        
+	      ((JavascriptExecutor)driver).executeScript("returnwindow.innerHeight;").toString();
+	       // System.out.println(Heights);
 
-		// After switching to the frame, locate element CREATE JOB ALERT By.xpath. 
-		  WebElement jobAlert = driver.findElement(By.xpath("//a[text() = 'CREATE JOB ALERT' ]")); 
-		  jobAlert.click(); 
+	        
+	     ((JavascriptExecutor)driver).executeScript("returnwindow.innerWidth;").toString();
+	        //System.out.println(Heights);
 
-		// Switch to main web page from iframe by using defaultContent() method. 
-		   System.out.println("Switching to main web page from second frame"); 
-		   driver.switchTo().defaultContent(); 
-		   driver.quit(); 
+
+	        
+	        
+	        
+	        
+	        
 	  } 
  }
 
